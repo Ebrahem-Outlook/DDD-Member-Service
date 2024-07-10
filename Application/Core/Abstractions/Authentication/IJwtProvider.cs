@@ -4,5 +4,5 @@ namespace Application.Core.Abstractions.Authentication;
 
 public interface IJwtProvider
 {
-    string CenerateToke(Member member);
+    string GenerateToken(Member member);
 }

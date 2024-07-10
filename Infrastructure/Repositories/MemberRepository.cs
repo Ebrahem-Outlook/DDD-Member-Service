@@ -40,4 +40,9 @@ internal sealed class MemberRepository(IDbContext dbContext) : IMemberRepository
     {
         return await dbContext.Set<Member>().Where(m => m.FirstName == name).ToListAsync(cancellationToken);
     }
+
+    public async Task<bool> IsEmailExest(string email, CancellationToken cancellationToken)
+    {
+        return await dbContext.Set<Member>().AnyAsync(m => m.Email == email, cancellationToken);
+    }
 }

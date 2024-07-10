@@ -12,4 +12,5 @@ public interface IMemberRepository
     Task<Member?> GetByIdAsync(Guid id, CancellationToken cancellationToken = default);
     Task<Member?> GetByEmailAsync(string email, CancellationToken cancellationToken = default);
     Task<IEnumerable<Member>?> GetByNameAsync(string name, CancellationToken cancellationToken = default);
+    Task<bool> IsEmailExest(string email, CancellationToken cancellationToken);
 }
