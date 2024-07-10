@@ -4,7 +4,8 @@ public interface IMemberRepository
 {
     // Commands.
     Task AddAsync(Member member, CancellationToken cancellationToken = default);
-    void Update(Member member, CancellationToken cancellationToken = default);
+    void Update(Member member);
+    void Delete(Member member);
 
     // Queries.
     Task<IEnumerable<Member>?> GetAllAsync(CancellationToken cancellationToken = default);
