@@ -1,3 +1,6 @@
+using Application;
+using Infrastructure;
+
 namespace API;
 
 public class Program
@@ -6,8 +9,12 @@ public class Program
     {
         var builder = WebApplication.CreateBuilder(args);
 
+        // Configuration.
+        var configuration = builder.Configuration;
+
         // Add services to the container.
         builder.Services.AddControllers();
+        builder.Services.AddInfrastructure(configuration);
 
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle

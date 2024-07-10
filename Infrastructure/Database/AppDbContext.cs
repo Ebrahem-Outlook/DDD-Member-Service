@@ -7,20 +7,22 @@ namespace Infrastructure.Database;
 
 public sealed class AppDbContext : DbContext, IDbContext, IUnitOfWork
 {
-    public new async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
+
+    public new Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        return await base.SaveChangesAsync(cancellationToken);
+        throw new NotImplementedException();
     }
 
     public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity
     {
-        return base.Set<TEntity>();
+        throw new NotImplementedException();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
-        base.OnModelCreating(modelBuilder);
-
         modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        base.OnModelCreating(modelBuilder);
     }
 }

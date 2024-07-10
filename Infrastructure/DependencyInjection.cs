@@ -1,5 +1,7 @@
 ﻿using Application.Core.Abstractions.Data;
+using Domain.Members;
 using Infrastructure.Database;
+using Infrastructure.Repositories;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -17,6 +19,8 @@ public static class DependencyInjection
         services.AddScoped<IDbContext>(options => options.GetRequiredService<AppDbContext>());
 
         services.AddScoped<IUnitOfWork>(options => options.GetRequiredService<AppDbContext>());
+
+        services.AddScoped<IMemberRepository, MemberRepository>();
 
         return services;
     }

@@ -1,5 +1,4 @@
-﻿
-namespace Domain.Core.BaseType;
+﻿namespace Domain.Core.BaseType;
 
 public abstract class Entity : IEquatable<Entity?>
 {
