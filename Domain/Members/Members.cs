@@ -48,5 +48,7 @@ public sealed class Member : AggregateRoot
     public void UpdatePassword(string password)
     {
         Password = password;
+
+        RaiseDomainEvent(new MemberPasswordUpdatedDomainEvent(Id, Password));
     }
 }
