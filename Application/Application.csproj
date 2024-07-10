@@ -17,7 +17,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Members\Commands\UpdateEmail\" />
     <Folder Include="Members\Commands\UpdatePassword\" />
     <Folder Include="Members\Events\MemberCreated\" />
     <Folder Include="Members\Events\MemberUpdated\" />
