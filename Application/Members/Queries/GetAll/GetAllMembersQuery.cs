@@ -2,4 +2,4 @@
 
 namespace Application.Members.Queries.GetAll;
 
-public sealed record GetAllMembersCommand() : IQuery<List<MemberDTO>>;
+public sealed record GetAllMembersQuery() : IQuery<List<MemberDTO>>;

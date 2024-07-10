@@ -4,18 +4,18 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Members.Queries.GetAll;
 
-internal sealed class GetAllMembersCommandHandler : IQueryHandler<GetAllMembersCommand, List<MemberDTO>>
+internal sealed class GetAllMembersQueryHandler : IQueryHandler<GetAllMembersQuery, List<MemberDTO>>
 {
-    private readonly ILogger<GetAllMembersCommandHandler> _logger;
     private readonly IMemberRepository _memberRepository;
+    private readonly ILogger<GetAllMembersQueryHandler> _logger;
 
-    public GetAllMembersCommandHandler(ILogger<GetAllMembersCommandHandler> logger, IMemberRepository memberRepository)
+    public GetAllMembersQueryHandler(ILogger<GetAllMembersQueryHandler> logger, IMemberRepository memberRepository)
     {
-        _logger = logger;
         _memberRepository = memberRepository;
+        _logger = logger;
     }
 
-    public async Task<List<MemberDTO>> Handle(GetAllMembersCommand request, CancellationToken cancellationToken)
+    public async Task<List<MemberDTO>> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
     {
         _logger.LogInformation("Service Start...");
 
@@ -23,6 +23,8 @@ internal sealed class GetAllMembersCommandHandler : IQueryHandler<GetAllMembersC
 
         if (members is null)
         {
+            _logger.LogError(@$"There are no member yet.");
+
             return new List<MemberDTO>();
         }
 
@@ -30,7 +32,7 @@ internal sealed class GetAllMembersCommandHandler : IQueryHandler<GetAllMembersC
 
         foreach (Member member in members)
         {
-            MemberDTO memberDTO = new(member.Id, member.FirstName, member.LastName, member.Email);
+            MemberDTO memberDTO = new(member.Id, member.FirstName, member.LastName, member.Email, member.Password);
 
             memberDTOs.Add(memberDTO);
         }
