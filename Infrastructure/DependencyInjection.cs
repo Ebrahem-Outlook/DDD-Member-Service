@@ -1,9 +1,11 @@
 ﻿using Application.Core.Abstractins.Authentication;
+using Application.Core.Abstractions.Common;
 using Application.Core.Abstractions.Data;
 using Domain.Members;
 using Infrastructure.Authentication;
 using Infrastructure.Authentication.Settings;
 using Infrastructure.Caching;
+using Infrastructure.Common;
 using Infrastructure.Database;
 using Infrastructure.Repositories;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
@@ -43,21 +45,23 @@ public static class DependencyInjection
 
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
-                {
-                    ValidateIssuer = true,
-                    ValidateAudience = true,
-                    ValidateLifetime = true,
-                    ValidateIssuerSigningKey = true,
-                    ValidIssuer = configuration["Jwt:Issuer"],
-                    ValidAudience = configuration["Jwt:Audience"],
-                    IssuerSigningKey = new SymmetricSecurityKey(
-                            Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]))
-                });
+                   .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+                   {
+                       ValidateIssuer = true,
+                       ValidateAudience = true,
+                       ValidateLifetime = true,
+                       ValidateIssuerSigningKey = true,
+                       ValidIssuer = configuration["Jwt:Issuer"],
+                       ValidAudience = configuration["Jwt:Audience"],
+                       IssuerSigningKey = new SymmetricSecurityKey(
+                           Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]))
+                   });
 
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SettingsKey));
 
         services.AddScoped<IJwtProvider, JwtProvider>();
+
+        services.AddScoped<IDateTime, MachineDateTime>();
 
         return services;
     }

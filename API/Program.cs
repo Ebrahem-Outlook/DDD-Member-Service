@@ -13,11 +13,22 @@ public class Program
         var configuration = builder.Configuration;
 
         // Add services to the container.
-        builder.Services.AddControllers();
+        
         builder.Services.AddApplication();
         builder.Services.AddInfrastructure(configuration);
+        builder.Services.AddControllers();
 
         builder.Services.AddHttpContextAccessor();
+
+        builder.Services.AddLogging();
+
+      
+
+
+        // Configure logging
+        builder.Logging.ClearProviders();
+        builder.Logging.AddConsole();
+        builder.Logging.AddDebug();
 
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
