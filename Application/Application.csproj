@@ -16,4 +16,16 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Members\Commands\CreateMember\" />
+    <Folder Include="Members\Commands\DeleteMember\" />
+    <Folder Include="Members\Commands\UpdateEmail\" />
+    <Folder Include="Members\Commands\UpdatePassword\" />
+    <Folder Include="Members\Commands\UpdateMember\" />
+    <Folder Include="Members\Events\" />
+    <Folder Include="Members\Queries\GetById\" />
+    <Folder Include="Members\Queries\GetByEmail\" />
+    <Folder Include="Members\Queries\GetByName\" />
+  </ItemGroup>
+
 </Project>

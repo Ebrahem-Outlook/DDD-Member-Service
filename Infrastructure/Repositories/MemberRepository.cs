@@ -21,7 +21,7 @@ internal sealed class MemberRepository(IDbContext dbContext) : IMemberRepository
         dbContext.Set<Member>().Remove(member);
     }
 
-    public async Task<IEnumerable<Member>?> GetAllAsync(CancellationToken cancellationToken = default)
+    public async Task<List<Member>?> GetAllAsync(CancellationToken cancellationToken = default)
     {
         return await dbContext.Set<Member>().ToListAsync(cancellationToken);
     }
@@ -36,7 +36,7 @@ internal sealed class MemberRepository(IDbContext dbContext) : IMemberRepository
         return await dbContext.Set<Member>().FirstOrDefaultAsync(m => m.Email == email, cancellationToken);
     }
 
-    public async Task<IEnumerable<Member>?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
+    public async Task<List<Member>?> GetByNameAsync(string name, CancellationToken cancellationToken = default)
     {
         return await dbContext.Set<Member>().Where(m => m.FirstName == name).ToListAsync(cancellationToken);
     }
