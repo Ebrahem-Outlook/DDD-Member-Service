@@ -1,6 +1,6 @@
 ﻿using Domain.Members;
 
-namespace Application.Core.Abstractions.Authentications;
+namespace Application.Core.Abstractins.Authentication;
 
 public interface IJwtProvider
 {

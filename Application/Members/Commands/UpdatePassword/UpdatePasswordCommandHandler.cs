@@ -1,4 +1,4 @@
-﻿using Application.Core.Abstractions.Authentications;
+﻿using Application.Core.Abstractins.Authentication;
 using Application.Core.Abstractions.Data;
 using Application.Core.Abstractions.Messaging;
 using Domain.Members;
