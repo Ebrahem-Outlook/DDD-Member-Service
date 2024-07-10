@@ -4,26 +4,19 @@ using Microsoft.Extensions.Logging;
 
 namespace Application.Members.Queries.GetAll;
 
-internal sealed class GetAllMembersQueryHandler : IQueryHandler<GetAllMembersQuery, List<MemberDTO>>
+internal sealed class GetAllMembersQueryHandler(
+    IMemberRepository memberRepository,
+    ILogger<GetAllMembersQueryHandler> logger) : IQueryHandler<GetAllMembersQuery, List<MemberDTO>>
 {
-    private readonly IMemberRepository _memberRepository;
-    private readonly ILogger<GetAllMembersQueryHandler> _logger;
-
-    public GetAllMembersQueryHandler(ILogger<GetAllMembersQueryHandler> logger, IMemberRepository memberRepository)
-    {
-        _memberRepository = memberRepository;
-        _logger = logger;
-    }
-
     public async Task<List<MemberDTO>> Handle(GetAllMembersQuery request, CancellationToken cancellationToken)
     {
-        _logger.LogInformation("Service Start...");
+        logger.LogInformation("Service Start...");
 
-        List<Member>? members = await _memberRepository.GetAllAsync(cancellationToken);
+        List<Member>? members = await memberRepository.GetAllAsync(cancellationToken);
 
         if (members is null)
         {
-            _logger.LogError(@$"There are no member yet.");
+            logger.LogError(@$"There are no member yet.");
 
             return new List<MemberDTO>();
         }
@@ -37,7 +30,7 @@ internal sealed class GetAllMembersQueryHandler : IQueryHandler<GetAllMembersQue
             memberDTOs.Add(memberDTO);
         }
         
-        _logger.LogInformation("Service Success...");
+        logger.LogInformation("Service Success...");
 
         return memberDTOs;
     }
