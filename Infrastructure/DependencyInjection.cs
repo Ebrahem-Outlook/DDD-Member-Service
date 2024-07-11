@@ -22,9 +22,14 @@ public static class DependencyInjection
 {
     public static IServiceCollection AddInfrastructure(this IServiceCollection services, IConfiguration configuration)
     {
-        string? connection = configuration.GetConnectionString("Local-SqlServer");
+        /*string? connection = configuration.GetConnectionString("Local-SqlServer");
 
         services.AddDbContext<AppDbContext>(options => options.UseSqlServer(connection));
+        */
+
+        string? connection = configuration.GetConnectionString("Docker-Postgres");
+
+        services.AddDbContext<AppDbContext>(options => options.UseNpgsql(connection));
 
         services.AddScoped<IDbContext>(serviceProvider => serviceProvider.GetRequiredService<AppDbContext>());
 

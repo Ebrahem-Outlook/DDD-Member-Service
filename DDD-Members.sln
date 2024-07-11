@@ -3,13 +3,15 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 17
 VisualStudioVersion = 17.10.35013.160
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Domain", "Domain\Domain.csproj", "{33BBD3C4-4B7B-44CA-9566-6FA94A9902A9}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Domain", "Domain\Domain.csproj", "{33BBD3C4-4B7B-44CA-9566-6FA94A9902A9}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Application", "Application\Application.csproj", "{ED9F784D-482B-4C2E-8B6D-F95C699850C7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Application", "Application\Application.csproj", "{ED9F784D-482B-4C2E-8B6D-F95C699850C7}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2BB55D97-1D10-4381-B938-716111CD38F0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Infrastructure", "Infrastructure\Infrastructure.csproj", "{2BB55D97-1D10-4381-B938-716111CD38F0}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "API", "API\API.csproj", "{C03E10B6-550D-4A30-88E2-F6F5FA17F20E}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{C03E10B6-550D-4A30-88E2-F6F5FA17F20E}"
+EndProject
+Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,10 @@ Global
 		{C03E10B6-550D-4A30-88E2-F6F5FA17F20E}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C03E10B6-550D-4A30-88E2-F6F5FA17F20E}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C03E10B6-550D-4A30-88E2-F6F5FA17F20E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
