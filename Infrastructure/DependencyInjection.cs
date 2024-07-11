@@ -45,22 +45,26 @@ public static class DependencyInjection
 
 
         services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
-                   .AddJwtBearer(options => options.TokenValidationParameters = new TokenValidationParameters
+                   .AddJwtBearer(options =>
                    {
-                       ValidateIssuer = true,
-                       ValidateAudience = true,
-                       ValidateLifetime = true,
-                       ValidateIssuerSigningKey = true,
-                       ValidIssuer = configuration["Jwt:Issuer"],
-                       ValidAudience = configuration["Jwt:Audience"],
-                       IssuerSigningKey = new SymmetricSecurityKey(
-                           Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]))
+                       options.TokenValidationParameters = new TokenValidationParameters
+                       {
+                           ValidateIssuer = true,
+                           ValidateAudience = true,
+                           ValidateLifetime = true,
+                           ValidateIssuerSigningKey = true,
+                           ValidIssuer = configuration["Jwt:Issuer"],
+                           ValidAudience = configuration["Jwt:Audience"],
+                           IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["Jwt:SecurityKey"]
+                                ?? throw new ArgumentNullException("Jwt:SecurityKey", "JWT Security Key is missing in configuration.")))
+                       };
                    });
 
+        // Configure JWT settings.
         services.Configure<JwtSettings>(configuration.GetSection(JwtSettings.SettingsKey));
 
+        // Register JWT provider and date time services.
         services.AddScoped<IJwtProvider, JwtProvider>();
-
         services.AddScoped<IDateTime, MachineDateTime>();
 
         return services;

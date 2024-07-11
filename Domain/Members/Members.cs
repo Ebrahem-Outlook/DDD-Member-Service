@@ -16,10 +16,10 @@ public sealed class Member : AggregateRoot
 
     private Member() : base() { }
 
-    public string FirstName { get; private set; } = default!;
-    public string LastName { get; private set; } = default!;
-    public string Email { get; private set; } = default!;
-    public string Password{ get; private set; } = default!;
+    public string FirstName { get; private set; } = string.Empty;
+    public string LastName { get; private set; } = string.Empty;
+    public string Email { get; private set; } = string.Empty;
+    public string Password{ get; private set; } = string.Empty;
 
     public static Member Create(string firstName, string lastName, string email, string password)
     {

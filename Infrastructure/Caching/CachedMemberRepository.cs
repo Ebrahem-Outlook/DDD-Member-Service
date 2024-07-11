@@ -32,7 +32,7 @@ internal sealed class CachedMemberRepository(MemberRepository decorated, IMemory
         string key = $"Key-AllMembers";
         return await memoryCache.GetOrCreateAsync(key, entry =>
         {
-            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
             return decorated.GetAllAsync(cancellationToken);
         });
@@ -43,7 +43,7 @@ internal sealed class CachedMemberRepository(MemberRepository decorated, IMemory
         string key = $"Key-{email}";
         return await memoryCache.GetOrCreateAsync(key, entry =>
         {
-            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
             return decorated.GetByEmailAsync(email, cancellationToken);
         });
@@ -54,7 +54,7 @@ internal sealed class CachedMemberRepository(MemberRepository decorated, IMemory
         string key = $"Key-{id}";
         return await memoryCache.GetOrCreateAsync(key, entry =>
         {
-            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
             return decorated.GetByIdAsync(id, cancellationToken);
         });
@@ -65,7 +65,7 @@ internal sealed class CachedMemberRepository(MemberRepository decorated, IMemory
         string key = $"Key-Names";
         return await memoryCache.GetOrCreateAsync(key, entry =>
         {
-            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
             return decorated.GetByNameAsync(name, cancellationToken);
         });
@@ -76,7 +76,7 @@ internal sealed class CachedMemberRepository(MemberRepository decorated, IMemory
         string key = $"Key-{email}";
         return await memoryCache.GetOrCreateAsync(key, entry =>
         {
-            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(2));
+            entry.SetAbsoluteExpiration(TimeSpan.FromMinutes(5));
 
             return decorated.IsEmailExest(email, cancellationToken);
         });

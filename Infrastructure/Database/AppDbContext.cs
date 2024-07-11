@@ -9,14 +9,14 @@ public sealed class AppDbContext : DbContext, IDbContext, IUnitOfWork
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options) { }
 
-    public new Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
+    public new async Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
     {
-        throw new NotImplementedException();
+        return await base.SaveChangesAsync(cancellationToken);
     }
 
     public new DbSet<TEntity> Set<TEntity>() where TEntity : Entity
     {
-        throw new NotImplementedException();
+        return base.Set<TEntity>();
     }
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
