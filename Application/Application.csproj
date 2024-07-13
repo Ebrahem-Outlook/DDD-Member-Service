@@ -16,12 +16,4 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Members\Events\MemberCreated\" />
-    <Folder Include="Members\Events\MemberUpdated\" />
-    <Folder Include="Members\Events\MemberDeleted\" />
-    <Folder Include="Members\Events\EmailUpdated\" />
-    <Folder Include="Members\Events\PasswordUpdated\" />
-  </ItemGroup>
-
 </Project>

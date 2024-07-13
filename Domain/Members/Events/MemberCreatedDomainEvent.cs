@@ -2,4 +2,4 @@
 
 namespace Domain.Members.Events;
 
-public sealed record MemberCreatedDomainEvent(Member Member) : IDomainEvent;
+public sealed record MemberCreatedDomainEvent(Member Member) : DomainEvent;

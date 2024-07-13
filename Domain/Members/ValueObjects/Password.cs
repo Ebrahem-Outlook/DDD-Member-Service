@@ -4,6 +4,7 @@ namespace Domain.Members.ValueObjects;
 
 public sealed class Password : ValueObject
 {
+    public const int MinLength = 6;
     public const int MaxLength = 50;
 
     private Password(string value) => Value = value;
@@ -17,7 +18,7 @@ public sealed class Password : ValueObject
             throw new ArgumentException();
         }
 
-        if (value.Length > MaxLength)
+        if (value.Length > MaxLength || value.Length < MinLength)
         {
             throw new ArgumentException();
         }

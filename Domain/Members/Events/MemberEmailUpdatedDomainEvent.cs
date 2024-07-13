@@ -5,4 +5,4 @@ namespace Domain.Members.Events;
 
 public sealed record MemberEmailUpdatedDomainEvent(
     Guid MemerId,
-    Email Email) : IDomainEvent;
+    Email Email) : DomainEvent;

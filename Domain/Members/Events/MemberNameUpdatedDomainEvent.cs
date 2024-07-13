@@ -6,4 +6,4 @@ namespace Domain.Members.Events;
 public sealed record MemberNameUpdatedDomainEvent(
     Guid MemberId, 
     FirstName FirstName, 
-    LastName LastName) : IDomainEvent;
+    LastName LastName) : DomainEvent;
