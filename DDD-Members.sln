@@ -13,6 +13,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "API", "API\API.csproj", "{C
 EndProject
 Project("{E53339B2-1760-4266-BCC7-CA923CBCF16C}") = "docker-compose", "docker-compose.dcproj", "{1BC924A1-AF2D-4A81-BBCB-D5479DF090B7}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Src", "Src", "{1B4685BD-AED6-4F6E-905B-6DFC8A193901}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -42,6 +44,12 @@ Global
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{33BBD3C4-4B7B-44CA-9566-6FA94A9902A9} = {1B4685BD-AED6-4F6E-905B-6DFC8A193901}
+		{ED9F784D-482B-4C2E-8B6D-F95C699850C7} = {1B4685BD-AED6-4F6E-905B-6DFC8A193901}
+		{2BB55D97-1D10-4381-B938-716111CD38F0} = {1B4685BD-AED6-4F6E-905B-6DFC8A193901}
+		{C03E10B6-550D-4A30-88E2-F6F5FA17F20E} = {1B4685BD-AED6-4F6E-905B-6DFC8A193901}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {D15D9A88-4AE2-4602-847D-B20F8BBEB3B2}
