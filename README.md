@@ -1,5 +1,3 @@
-
-DDD-Members
 ---
 
 # DDD-Members
