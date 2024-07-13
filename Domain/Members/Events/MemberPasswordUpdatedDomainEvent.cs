@@ -1,7 +1,8 @@
 ﻿using Domain.Core.Events;
+using Domain.Members.ValueObjects;
 
 namespace Domain.Members.Events;
 
 public sealed record MemberPasswordUpdatedDomainEvent(
     Guid MemberId,
-    string Password) : IDomainEvent;
+    Password Password) : IDomainEvent;

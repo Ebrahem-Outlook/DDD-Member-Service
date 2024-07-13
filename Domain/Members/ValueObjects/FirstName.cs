@@ -25,7 +25,7 @@ public sealed class FirstName : ValueObject
         return new FirstName(value);
     }
 
-    protected override IEnumerable<object> GetAtomicValues()
+    protected override IEnumerable<object> GetEqualityComponents()
     {
         yield return Value;
     }

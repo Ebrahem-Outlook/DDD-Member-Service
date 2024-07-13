@@ -1,6 +1,11 @@
-﻿namespace Domain.Members.ValueObjects;
+﻿using Domain.Core.BaseType;
 
-public sealed class Email
+namespace Domain.Members.ValueObjects;
+
+public sealed class Email : ValueObject
 {
-
+    protected override IEnumerable<object> GetEqualityComponents()
+    {
+        throw new NotImplementedException();
+    }
 }

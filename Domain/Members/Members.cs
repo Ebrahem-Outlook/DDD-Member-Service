@@ -1,11 +1,14 @@
 ﻿using Domain.Core.BaseType;
 using Domain.Members.Events;
+using Domain.Members.ValueObjects;
 
 namespace Domain.Members;
 
 public sealed class Member : AggregateRoot
 {
-    private Member(string firstName, string lastName, string email, string password) 
+    private Member() : base() { }
+
+    private Member(FirstName firstName, LastName lastName, Email email, Password password) 
         : base(Guid.NewGuid())
     {
         FirstName = firstName;
@@ -14,14 +17,12 @@ public sealed class Member : AggregateRoot
         Password = password;
     }
 
-    private Member() : base() { }
+    public FirstName FirstName { get; private set; } = default!;
+    public LastName LastName { get; private set; } = default!;
+    public Email Email { get; private set; } = default!;
+    public Password Password { get; private set; } = default!;
 
-    public string FirstName { get; private set; } = string.Empty;
-    public string LastName { get; private set; } = string.Empty;
-    public string Email { get; private set; } = string.Empty;
-    public string Password{ get; private set; } = string.Empty;
-
-    public static Member Create(string firstName, string lastName, string email, string password)
+    public static Member Create(FirstName firstName, LastName lastName, Email email, Password password)
     {
         Member member = new(firstName, lastName, email, password);
 
@@ -30,7 +31,7 @@ public sealed class Member : AggregateRoot
         return member;
     }
 
-    public void UpdateName(string firstName, string lastName)
+    public void UpdateName(FirstName firstName, LastName lastName)
     {
         FirstName = firstName;
         LastName = lastName;
@@ -38,14 +39,14 @@ public sealed class Member : AggregateRoot
         RaiseDomainEvent(new MemberNameUpdatedDomainEvent(Id, FirstName, LastName));
     }
 
-    public void UpdateEmail(string email)
+    public void UpdateEmail(Email email)
     {
         Email = email;
 
         RaiseDomainEvent(new MemberEmailUpdatedDomainEvent(Id, Email));
     }
 
-    public void UpdatePassword(string password)
+    public void UpdatePassword(Password password)
     {
         Password = password;
 

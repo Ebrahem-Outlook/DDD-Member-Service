@@ -1,8 +1,9 @@
 ﻿using Domain.Core.Events;
+using Domain.Members.ValueObjects;
 
 namespace Domain.Members.Events;
 
 public sealed record MemberNameUpdatedDomainEvent(
     Guid MemberId, 
-    string FirstName, 
-    string LastName) : IDomainEvent;
+    FirstName FirstName, 
+    LastName LastName) : IDomainEvent;

@@ -1,6 +1,4 @@
-﻿using Domain.Members.ValueObjects;
-
-namespace Domain.Core.BaseType;
+﻿namespace Domain.Core.BaseType;
 
 public abstract class ValueObject 
 {

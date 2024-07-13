@@ -1,7 +1,8 @@
-﻿
+﻿using Domain.Core.BaseType;
+
 namespace Domain.Members.ValueObjects;
 
-public sealed class LastName : IEquatable<LastName?>
+public sealed class LastName : ValueObject
 {
     public const int MaxLength = 50;
 
@@ -24,29 +25,8 @@ public sealed class LastName : IEquatable<LastName?>
         return new LastName(value);
     }
 
-    public override bool Equals(object? obj)
+    protected override IEnumerable<object> GetEqualityComponents()
     {
-        return Equals(obj as LastName);
-    }
-
-    public bool Equals(LastName? other)
-    {
-        return other is not null &&
-               Value == other.Value;
-    }
-
-    public override int GetHashCode()
-    {
-        return HashCode.Combine(Value);
-    }
-
-    public static bool operator ==(LastName? left, LastName? right)
-    {
-        return EqualityComparer<LastName>.Default.Equals(left, right);
-    }
-
-    public static bool operator !=(LastName? left, LastName? right)
-    {
-        return !(left == right);
+        yield return Value;
     }
 }

@@ -6,7 +6,7 @@ public abstract class Entity : IEquatable<Entity?>
 
     protected Entity() { }
 
-    public Guid Id { get; private set; }
+    public Guid Id { get; }
 
     public override bool Equals(object? obj)
     {

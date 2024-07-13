@@ -1,7 +1,8 @@
 ﻿using Domain.Core.Events;
+using Domain.Members.ValueObjects;
 
 namespace Domain.Members.Events;
 
 public sealed record MemberEmailUpdatedDomainEvent(
     Guid MemerId,
-    string Email) : IDomainEvent;
+    Email Email) : IDomainEvent;
