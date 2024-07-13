@@ -2,9 +2,9 @@
 
 namespace Application.Members.Queries.GetByEmail;
 
-internal sealed class GetByEmailValidator : AbstractValidator<GetByEmailQuery>
+internal sealed class GetByEmailQueryValidator : AbstractValidator<GetByEmailQuery>
 {
-    public GetByEmailValidator()
+    public GetByEmailQueryValidator()
     {
         RuleFor(x => x.Email).NotEmpty().WithMessage("Email is required.");
     }

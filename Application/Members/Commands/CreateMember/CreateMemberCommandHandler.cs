@@ -1,5 +1,4 @@
 ﻿using Application.Core.Abstractins.Authentication;
-using Application.Core.Abstractions.Data;
 using Application.Core.Abstractions.Messaging;
 using Domain.Members;
 using Microsoft.Extensions.Logging;
@@ -8,7 +7,6 @@ namespace Application.Members.Commands.CreateMember;
 
 internal sealed class CreateMemberCommandHandler(
     IMemberRepository memberRepository, 
-    IUnitOfWork unitOfWork, 
     IJwtProvider jwtProvider, 
     ILogger<CreateMemberCommandHandler> logger) : ICommandHandler<CreateMemberCommand, string>
 {
@@ -30,8 +28,6 @@ internal sealed class CreateMemberCommandHandler(
         await memberRepository.AddAsync(member);
 
         string token = jwtProvider.GenerateToken(member);
-
-        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         logger.LogInformation("Service Success...");
 

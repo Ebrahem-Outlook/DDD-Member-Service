@@ -7,6 +7,12 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Members\Events\**" />
+    <EmbeddedResource Remove="Members\Events\**" />
+    <None Remove="Members\Events\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Domain\Domain.csproj" />
   </ItemGroup>
 
@@ -14,14 +20,6 @@
     <PackageReference Include="FluentValidation" Version="11.9.2" />
     <PackageReference Include="FluentValidation.DependencyInjectionExtensions" Version="11.9.2" />
     <PackageReference Include="Microsoft.EntityFrameworkCore" Version="8.0.7" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Members\Events\MemberCreated\" />
-    <Folder Include="Members\Events\MemberUpdated\" />
-    <Folder Include="Members\Events\EmailUpdated\" />
-    <Folder Include="Members\Events\MemberDeleted\" />
-    <Folder Include="Members\Events\PasswordUpdated\" />
   </ItemGroup>
 
 </Project>

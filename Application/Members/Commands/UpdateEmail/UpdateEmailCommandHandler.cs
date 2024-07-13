@@ -1,5 +1,4 @@
 ﻿using Application.Core.Abstractins.Authentication;
-using Application.Core.Abstractions.Data;
 using Application.Core.Abstractions.Messaging;
 using Domain.Members;
 using Microsoft.Extensions.Logging;
@@ -8,7 +7,6 @@ namespace Application.Members.Commands.UpdateEmail;
 
 internal sealed class UpdateEmailCommandHandler(
     IMemberRepository memberRepository, 
-    IUnitOfWork unitOfWork, 
     IJwtProvider jwtProvider,
     ILogger<UpdateEmailCommandHandler> logger) : ICommandHandler<UpdateEmailCommand, string>
 {
@@ -30,8 +28,6 @@ internal sealed class UpdateEmailCommandHandler(
         memberRepository.Update(member);
 
         string token = jwtProvider.GenerateToken(member);
-
-        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         logger.LogInformation("Service Success...");
 

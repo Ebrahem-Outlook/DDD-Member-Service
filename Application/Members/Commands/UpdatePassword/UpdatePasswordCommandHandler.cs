@@ -1,5 +1,4 @@
 ﻿using Application.Core.Abstractins.Authentication;
-using Application.Core.Abstractions.Data;
 using Application.Core.Abstractions.Messaging;
 using Domain.Members;
 using Microsoft.Extensions.Logging;
@@ -8,7 +7,6 @@ namespace Application.Members.Commands.UpdatePassword;
 
 internal sealed class UpdatePasswordCommandHandler(
     IMemberRepository memberRepository, 
-    IUnitOfWork unitOfWork,
     IJwtProvider jwtProvider, 
     ILogger<UpdatePasswordCommandHandler> logger) : ICommandHandler<UpdatePasswordCommand, string>
 {
@@ -30,8 +28,6 @@ internal sealed class UpdatePasswordCommandHandler(
         memberRepository.Update(member);
 
         string token = jwtProvider.GenerateToken(member);
-
-        await unitOfWork.SaveChangesAsync(cancellationToken);
 
         logger.LogInformation("Service Success... ");
 
