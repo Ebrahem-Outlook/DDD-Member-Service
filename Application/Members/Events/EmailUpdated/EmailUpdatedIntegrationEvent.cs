@@ -1,6 +1,6 @@
 ﻿namespace Application.Members.Events.EmailUpdated
 {
-    internal class EmailUpdatedIntegrationEvent : 
+    internal class EmailUpdatedIntegrationEvent : IIntgra 
     {
     }
 }

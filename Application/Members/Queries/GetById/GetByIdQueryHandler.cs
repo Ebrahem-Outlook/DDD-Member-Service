@@ -23,7 +23,7 @@ internal sealed record GetByIdQueryHandler(
             return new MemberDTO(Guid.Empty, default!, default!, default!, default!);
         }
 
-        MemberDTO memberDTO = new(member.Id, member.FirstName, member.LastName, member.Email, member.Password);
+        MemberDTO memberDTO = new(member.Id, member.FirstName.Value, member.LastName.Value, member.Email.Value, member.Password.Value);
 
         Logger.LogInformation("Service Success...");
 
